@@ -13,7 +13,9 @@ public class GPSPoint {
 		throw new UnsupportedOperationException(TODO.construtor("GPSPoint"));
 
 	}
-//hallo 
+	
+	//hallo 
+
 	// TODO - get/set metoder
 	public int getTime() {
 		
