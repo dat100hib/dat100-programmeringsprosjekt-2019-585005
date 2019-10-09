@@ -27,28 +27,36 @@ public class GPSUtils {
 		double min;
 
 		// TODO - START
-
-		throw new UnsupportedOperationException(TODO.method());
-
+		min = da[0];
+		
+		for(double d : da) {
+			if(d < min) {
+				min = d;
+			}
+		}
+		return min;
 		// TODO - SLUT
-
 	}
 
 	public static double[] getLatitudes(GPSPoint[] gpspoints) {
 
 		// TODO - START
-		
-		throw new UnsupportedOperationException(TODO.method());
-		
+		double[] ny = new double[gpspoints.length];
+		for(int i=0; i < gpspoints.length; i++) {
+			ny[i] = gpspoints[i].getLatitude();
+		}
+		return ny;
 		// TODO - SLUTT
 	}
 
 	public static double[] getLongitudes(GPSPoint[] gpspoints) {
 
 		// TODO - START
-
-		throw new UnsupportedOperationException(TODO.method());
-		
+		double[] ny = new double[gpspoints.length];
+		for(int i=0; i < gpspoints.length; i++) {
+			ny[i] = gpspoints[i].getLongitude();
+		}
+		return ny;
 		// TODO - SLUTT
 
 	}
@@ -61,9 +69,19 @@ public class GPSUtils {
 		double latitude1, longitude1, latitude2, longitude2;
 
 		// TODO - START
-
-		throw new UnsupportedOperationException(TODO.method());
-
+		int r = 6371000;
+		latitude1 = gpspoint1.getLatitude();
+		latitude2 = gpspoint2.getLatitude();
+		longitude1 = gpspoint1.getLongitude();
+		longitude2 = gpspoint2.getLongitude();
+		double theta1 = toRadians(latitude1);
+		double theta2 = toRadians(latitude2);
+		double delta1 = latitude2 - latitude1;
+		double delta2 = longitude2 - longitude1;
+		double a = pow(sin(delta1/2),2) + cos(theta1) * cos(theta2) * pow(sin(delta2/2),2);
+		double c = 2* atan2(sqrt(a), sqrt(1-a));
+		d = r * c;
+		return d;
 		// TODO - SLUTT
 
 	}
