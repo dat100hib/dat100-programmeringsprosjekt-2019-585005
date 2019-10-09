@@ -5,7 +5,6 @@ import no.hvl.dat100ptc.oppgave1.GPSPoint;
 
 public class GPSData {
 	
-	//hei 
 
 	private GPSPoint[] gpspoints;
 	protected int antall = 0;
