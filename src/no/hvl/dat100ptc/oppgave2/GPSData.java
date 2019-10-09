@@ -47,7 +47,7 @@ public class GPSData {
 
 		return inserted;
 		// TODO - SLUTT
-		
+		 
 	}
 
 	public void print() {
