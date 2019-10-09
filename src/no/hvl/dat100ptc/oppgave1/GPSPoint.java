@@ -13,7 +13,7 @@ public class GPSPoint {
 	public GPSPoint(int time, double latitude, double longitude, double elevation) {
 
 		// TODO - konstruktur
-		this.time = time;
+		this.time = time; 
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.elevation = elevation;
