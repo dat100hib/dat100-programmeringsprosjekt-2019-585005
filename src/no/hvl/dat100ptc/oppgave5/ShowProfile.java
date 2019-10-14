@@ -48,7 +48,7 @@ public class ShowProfile extends EasyGraphics {
 		
 		// TODO - START
 		setColor(0,0,255);
-		int startX = 0;
+		int startX = MARGIN;
 		int startY = ybase;
 		int endX = startX;
 		int endY = 0;
@@ -56,7 +56,7 @@ public class ShowProfile extends EasyGraphics {
 			startX += 3;
 			endX = (startX + 2);
 			endY = (int) gpspoints[i].getElevation();
-			drawLine(startX, startY, endX, endY);
+			drawLine(startX, startY, startX, ybase - endY);
 		}
 		
 	
