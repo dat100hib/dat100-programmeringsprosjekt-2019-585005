@@ -33,7 +33,7 @@ public class GPSComputer {
 
 		// TODO - START
 		for(int i=0; i < gpspoints.length - 1; i++) {
-			distance += GPSUtils.distance(gpspoints[i], gpspoints[i+1]);
+			distance += GPSUtils.distance(gpspoints[i+1], gpspoints[i]);
 		}
 		
 		return distance;

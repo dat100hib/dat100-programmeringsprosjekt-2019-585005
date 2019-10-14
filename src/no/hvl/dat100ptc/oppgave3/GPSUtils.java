@@ -2,6 +2,8 @@ package no.hvl.dat100ptc.oppgave3;
 
 import static java.lang.Math.*;
 
+import java.util.Locale;
+
 import no.hvl.dat100ptc.TODO;
 import no.hvl.dat100ptc.oppgave1.GPSPoint;
 import no.hvl.dat100ptc.oppgave2.GPSDataConverter;
@@ -76,8 +78,8 @@ public class GPSUtils {
 		longitude2 = gpspoint2.getLongitude();
 		double theta1 = toRadians(latitude1);
 		double theta2 = toRadians(latitude2);
-		double delta1 = latitude2 - latitude1;
-		double delta2 = longitude2 - longitude1;
+		double delta1 = toRadians(latitude2)- toRadians(latitude1);
+		double delta2 = toRadians(longitude2) - toRadians(longitude1);
 		double a = pow(sin(delta1/2),2) + cos(theta1) * cos(theta2) * pow(sin(delta2/2),2);
 		double c = 2* atan2(sqrt(a), sqrt(1-a));
 		d = R * c;
@@ -116,6 +118,11 @@ public class GPSUtils {
 		int mm = rest / 60;
 		int ss = rest % 60;
 		
+		//Vi må formatere alle Intene, 
+		
+		
+		
+		
 		timestr = String.format("%10s", hh + TIMESEP + mm + TIMESEP + ss);
 		return timestr;
 		// TODO - SLUTT
@@ -128,7 +135,8 @@ public class GPSUtils {
 		String str;
 
 		// TODO - START
-		str = String.format("%10.2f", d);
+		//Locate US må fikses. måtte googles av Johan
+		str = String.format(Locale.US,"%"+TEXTWIDTH+".2f", d);
 		return str;
 		// TODO - SLUTT
 		
