@@ -119,11 +119,12 @@ public class GPSUtils {
 		int ss = rest % 60;
 		
 		//Vi må formatere alle Intene, 
+		//hvordan blir int til string?
 		
-		
-		
-		
-		timestr = String.format("%10s", hh + TIMESEP + mm + TIMESEP + ss);
+		String hhstr = String.format("%02d", hh); 
+		String mmstr = String.format("%02d", mm); 
+		String ssstr = String.format("%02d", ss); 
+		timestr = String.format("%10s", hhstr + TIMESEP + mmstr + TIMESEP + ssstr);
 		return timestr;
 		// TODO - SLUTT
 
@@ -135,7 +136,8 @@ public class GPSUtils {
 		String str;
 
 		// TODO - START
-		//Locate US må fikses. måtte googles av Johan
+		//Locate US må fikses. måtte googles av Johan 
+		//vi må bruke amerikansk formatering siden europeisk bli feil i dette tilfellet. ganske rart egentlig :)
 		str = String.format(Locale.US,"%"+TEXTWIDTH+".2f", d);
 		return str;
 		// TODO - SLUTT

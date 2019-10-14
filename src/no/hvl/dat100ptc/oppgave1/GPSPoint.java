@@ -60,7 +60,7 @@ public class GPSPoint {
 		
 		// TODO - start
 		//1 (2.0,3.0) 5.0\n
-		str = time + "  (" + latitude + "," + longitude + ") " + elevation + "\n";
+		str = time + " (" + latitude + "," + longitude + ") " + elevation + "\n";
 		return str;
 		// TODO - slutt
 		
