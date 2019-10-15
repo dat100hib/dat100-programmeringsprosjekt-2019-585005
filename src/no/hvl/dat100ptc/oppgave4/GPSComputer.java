@@ -127,19 +127,19 @@ public class GPSComputer {
 		double speedmph = speed * MS;
 
 		// TODO - START
-		if (speedmph>10) {
+		if (speedmph>=10) {
 		   met=4;
 		}
-		else if (speedmph>12) {
+		else if (speedmph>=12) {
 		    met=6;
 		}
-		else if (speedmph>14) {
+		else if (speedmph>=14) {
             met=8;
         }
-		else if (speedmph>16) {
+		else if (speedmph>=16) {
             met=10;
         }
-		else if (speedmph>20) {
+		else if (speedmph>=20) {
             met=12;
         }
 		else {
