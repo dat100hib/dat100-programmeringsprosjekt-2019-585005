@@ -54,9 +54,9 @@ public class ShowProfile extends EasyGraphics {
 		int endY = 0;
 		for(int i=0; i <gpspoints.length; i++) {
 			startX += 3;
-			endX = (startX + 2);
+			endX = startX ;
 			endY = (int) gpspoints[i].getElevation();
-			drawLine(startX, startY, startX, ybase - endY);
+			drawLine(startX, startY, endX, ybase - endY);
 		}
 		
 	
