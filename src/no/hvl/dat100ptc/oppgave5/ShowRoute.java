@@ -73,12 +73,13 @@ public class ShowRoute extends EasyGraphics {
 
 		// TODO - START
 		setColor(0,0,255);
+		
 		int centerX = 0;
 		int centerY = ybase;
 		int radius = 2;
 		for(int i=0; i < gpspoints.length; i++) {
 			centerX = (int) gpspoints[i].getLongitude();
-			centerY = (int) gpspoints[i].getLatitude();
+			centerY = ybase-(int) gpspoints[i].getLatitude();
 			fillCircle(centerX, centerY, radius);
 		}
 		
@@ -94,7 +95,8 @@ public class ShowRoute extends EasyGraphics {
 		
 		// TODO - START
 		
-		gpscomputer.displayStatistics();
+		String tekst = "Total time ";
+		drawString(tekst, TEXTDISTANCE, 60);
 		
 		// TODO - SLUTT;
 	}

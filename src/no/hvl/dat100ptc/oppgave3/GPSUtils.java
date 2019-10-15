@@ -118,7 +118,7 @@ public class GPSUtils {
 		int mm = rest / 60;
 		int ss = rest % 60;
 		
-		//Vi må formatere alle Intene, 
+		//Vi mï¿½ formatere alle Intene, 
 		//hvordan blir int til string?
 		
 		String hhstr = String.format("%02d", hh); 
@@ -134,10 +134,11 @@ public class GPSUtils {
 	public static String formatDouble(double d) {
 
 		String str;
+		
 
 		// TODO - START
-		//Locate US må fikses. måtte googles av Johan 
-		//vi må bruke amerikansk formatering siden europeisk bli feil i dette tilfellet. ganske rart egentlig :)
+		//Locate US mï¿½ fikses. mï¿½tte googles av Johan 
+		//vi mï¿½ bruke amerikansk formatering siden europeisk bli feil i dette tilfellet. ganske rart egentlig :)
 		str = String.format(Locale.US,"%"+TEXTWIDTH+".2f", d);
 		return str;
 		// TODO - SLUTT
