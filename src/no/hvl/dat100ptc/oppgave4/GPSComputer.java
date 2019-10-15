@@ -60,7 +60,7 @@ public class GPSComputer {
 	// beregn total tiden for hele turen (i sekunder)
 	public int totalTime() {
 
-		return gpspoints[gpspoints.length-1].getTime() - gpspoints[0].getTime();
+	    return gpspoints[gpspoints.length-1].getTime() - gpspoints[0].getTime();
 	}
 		
 	// beregn gjennomsnitshastighets mellom hver av gps punktene
@@ -145,8 +145,8 @@ public class GPSComputer {
 		else {
 		    met = 16;
 		}
-		
-		kcal = met * weight * (secs / 3600);
+		double h = secs/3600.0;
+		kcal = met * weight * h;
 		
 		return kcal;
 		// TODO - SLUTT
@@ -158,11 +158,12 @@ public class GPSComputer {
 		double totalkcal = 0;
 
 		// TODO - START
-		for (int i = 0; i < gpspoints.length-1; i++) {
-		totalkcal += kcal(weight, gpspoints[i+1].getTime() - gpspoints[i].getTime(), GPSUtils.speed(gpspoints[i], gpspoints[i+1])); 		    
-		}
+		double averageSpeed = averageSpeed();
+		int totalTime = totalTime();
 		
-		return totalkcal; 
+		totalkcal = kcal(weight, totalTime, averageSpeed);
+		return totalkcal;
+	
 
 		// TODO - SLUTT
 		
@@ -175,19 +176,19 @@ public class GPSComputer {
 		System.out.println("==============================================");
 
 		// TODO - START
-		    System.out.printf("%10s %6s %10s %n", "Total Time" , ":" , GPSUtils.formatTime(totalTime()) ); 
+		    System.out.println("Total Time     :" + GPSUtils.formatTime(totalTime()) ); 
 	        
-	        System.out.printf("%10s %2s %13.2f %n", "Total Distance" , ":" , totalDistance() + " km"); 
+	        System.out.println("Total Distance :" + GPSUtils.formatDouble(totalDistance()) + " km"); 
 
-	        System.out.printf("%10s %1s %12.2f %n", "Total Elevation" , ":" , totalElevation() + " m" ); 
+	        System.out.println("Total Elevation:" +GPSUtils.formatDouble(totalElevation()) + " m" ); 
 
-	        System.out.printf("%9s %7s %15.2f %n", "Max Speed" , ":" , maxSpeed() + " km/t"); 
+	        System.out.println("Max Speed      :" +GPSUtils.formatDouble(maxSpeed()) + " km/t"); 
 	        
-	        System.out.printf("%10s %3s %15.2f %n", "Average Speed" , ":" , averageSpeed() + " km/t"); 
+	        System.out.println("Average Speed  :" +GPSUtils.formatDouble(averageSpeed()) + " km/t"); 
 	        
-	        System.out.printf("%6s %10s %15.2f %n", "Energy" , ":" , totalKcal(WEIGHT) + " kcal"); 
+	        System.out.println("Energy         :" + GPSUtils.formatDouble(totalKcal(WEIGHT)) + " kcal"); 
 
-		
+	        System.out.println("==============================================");
 		
 		// TODO - SLUTT
 	    
