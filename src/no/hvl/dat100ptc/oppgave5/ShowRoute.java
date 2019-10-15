@@ -36,7 +36,7 @@ public class ShowRoute extends EasyGraphics {
 
 		showRouteMap(MARGIN + MAPYSIZE);
 
-		playRoute(MARGIN + MAPYSIZE);
+//		playRoute(MARGIN + MAPYSIZE);
 		
 		showStatistics();
 	}
@@ -72,14 +72,15 @@ public class ShowRoute extends EasyGraphics {
 	public void showRouteMap(int ybase) {
 
 		// TODO - START
-		setColor(0,0,255);
+		setColor(0,255,0);
 		
 		int centerX = 0;
 		int centerY = ybase;
-		int radius = 2;
+		int radius = 4;
+		
 		for(int i=0; i < gpspoints.length; i++) {
 			centerX = (int) gpspoints[i].getLongitude();
-			centerY = ybase-(int) gpspoints[i].getLatitude();
+			centerY = (int) gpspoints[i].getLatitude();
 			fillCircle(centerX, centerY, radius);
 		}
 		
@@ -95,20 +96,23 @@ public class ShowRoute extends EasyGraphics {
 		
 		// TODO - START
 		
-		String tekst = "Total time ";
-		drawString(tekst, TEXTDISTANCE, 60);
-		
+		drawString("Total Time     :" + GPSUtils.formatTime(gpscomputer.totalTime()), TEXTDISTANCE, 60);  
+        drawString(("Total Distance :" + GPSUtils.formatDouble(gpscomputer.totalDistance()) + " km"), TEXTDISTANCE, 70);
+        drawString(("Total Elevation:" +GPSUtils.formatDouble(gpscomputer.totalElevation()) + " m" ), TEXTDISTANCE, 80);
+		drawString(("Max Speed      :" +GPSUtils.formatDouble(gpscomputer.maxSpeed()) + " km/t"), TEXTDISTANCE, 90);
+		drawString(("Average Speed  :" +GPSUtils.formatDouble(gpscomputer.averageSpeed()) + " km/t"), TEXTDISTANCE, 100);
+		drawString(("Energy         :" + GPSUtils.formatDouble(gpscomputer.totalKcal(80.0)) + " kcal"), TEXTDISTANCE, 110);
 		// TODO - SLUTT;
 	}
 
-	public void playRoute(int ybase) {
-
-		// TODO - START
-		for(int i=0; i < gpspoints.length; i++) {
-			
-		}
-		
-		// TODO - SLUTT
-	}
+//	public void playRoute(int ybase) {
+//
+//		// TODO - START
+//		for(int i=0; i < gpspoints.length; i++) {
+//			
+//		}
+//		
+//		// TODO - SLUTT
+//	}
 
 }
