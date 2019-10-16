@@ -56,13 +56,13 @@ public class ShowSpeed extends EasyGraphics {
 			startX += 3;
 			endX = startX ;
 			endY = (int) GPSUtils.speed(gpspoints[i], gpspoints[i+1]);
-			drawLine(startX, startY, endX, ybase-endY);
+			drawLine(startX, startY, endX, ybase-endY*timescaling);
 		}
 		setColor(0, 255, 0);
 		startX = MARGIN;
-		startY = (int) gpscomputer.averageSpeed() - 2;
-		endY = (int) gpscomputer.averageSpeed() + 2;
-		drawLine(startX, ybase-startY, endX, ybase-endY);
+		startY = (int) gpscomputer.averageSpeed();
+		endY = (int) gpscomputer.averageSpeed();
+		drawLine(startX, ybase-startY*timescaling, endX, ybase-endY*timescaling);
 		// TODO - SLUTT
 	}
 }
