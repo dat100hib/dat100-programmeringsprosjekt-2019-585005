@@ -72,16 +72,31 @@ public class ShowRoute extends EasyGraphics {
 	public void showRouteMap(int ybase) {
 
 		// TODO - START
-		setColor(0,255,0);
+		double[] latitudes = GPSUtils.getLatitudes(gpspoints); 
+		double[] longitudes = GPSUtils.getLongitudes(gpspoints); 
 		
-		int centerX = 0;
-		int centerY = ybase;
-		int radius = 4;
-		
-		for(int i=0; i < gpspoints.length; i++) {
-			centerX = (int) gpspoints[i].getLongitude();
-			centerY = (int) gpspoints[i].getLatitude();
-			fillCircle(centerX, centerY, radius);
+		for(int i = 0; i<gpspoints.length-1; i++) {
+		    double y = latitudes[i];
+		    double x = longitudes[i]; 
+		    double y2 = latitudes[i+1];
+		    double x2 = longitudes[i+1]; 
+		    
+		    int xpos = (int)((x - GPSUtils.findMin(longitudes))* xstep()); 
+		    int ypos = (int)((GPSUtils.findMax(latitudes)-y)* ystep()); 
+		    
+		    int xpos2 = (int)((x2 - GPSUtils.findMin(longitudes))* xstep()); 
+		    int ypos2 = (int)((GPSUtils.findMax(latitudes)-y2)* ystep()); 
+		    
+		    if(i==gpspoints.length-2) {
+		        setColor(0,0,255); 
+		        fillCircle(xpos,MARGIN+ypos,3);
+		        drawLine(xpos, ypos, xpos2, ypos2); 
+		    }else {
+		        setColor(0,255,0); 
+		        fillCircle(xpos, MARGIN+ypos,3); 
+		        drawLine(xpos, ypos, xpos2, ypos2); 
+		    }
+		    
 		}
 		
 		// TODO - SLUTT
